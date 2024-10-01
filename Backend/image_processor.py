@@ -48,7 +48,7 @@ def process_scorecard(text):
             print(attemptsZ)
             tempString = ""
 
-#takes in a string in format 00Z0T which represents a boulder score and return if they top/zone on it and how many attempts it takes
+#takes in a string in format 00Z0T which represents a boulder score and return if they top/zone on it and how many attempts it takesaaaa
 def score_boulder(tempString):
     top = False
     zone = False
@@ -76,7 +76,7 @@ def score_boulder(tempString):
 
 
 # Example usage
-text = process_image("IMG_7325.jpg")
+text = process_image("card.jpg")
 print("below is the extracted string.")
 print("Extracted Text:", text)
 process_scorecard(text)
