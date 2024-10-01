@@ -25,12 +25,13 @@ def process_scorecard(text):
     attemptsT = 0
     attemptsZ = 0
     tempString = ""
+    char = 0
 
     #find start of score
     for val in text: 
-        if val == 0 or val =="O" or val =="T" or val =="Z": #we can write a fxn to check for this
-            tempString += val
-        if val == "B": #shows that we are done looking at the scores of the last boulder
+        if val == "0" or val =="O" or val =="T" or val =="Z": #we can write a fxn to check for this
+            tempString += str(val)
+        if val == "B" or char == len(text)-1: #shows that we are done looking at the scores of the last boulder
             #calc tops/zones/attemps
             score = score_boulder(tempString)
             if score[0] : #true if topped
@@ -39,17 +40,16 @@ def process_scorecard(text):
             if score[1]: #true if zoned
                 zones +=1
                 attemptsZ += score[3] #score[3] is the attempts to zone
-                
-            #reset our tempstring
-            print(tops)
-            print(zones)
-            
-            print(attemptsT)
-            print(attemptsZ)
             tempString = ""
+        char +=1
+    print("Tops: " + str(tops))
+    print("Zones: " + str(zones))
+    print("Attempts to top: " + str(attemptsT))
+    print("Attempts to zone: " + str(attemptsZ))
 
 #takes in a string in format 00Z0T which represents a boulder score and return if they top/zone on it and how many attempts it takesaaaa
 def score_boulder(tempString):
+
     top = False
     zone = False
     tempAttemptT = 0
@@ -64,13 +64,14 @@ def score_boulder(tempString):
                 zone = True
                 tempAttemptZ+=1
                 tempAttemptT+=1
+            else: 
+                tempAttemptT+=1
         if char == "T": 
-            top = True
-                    
+            top = True     
             tempAttemptT += 1
             if zone == False: 
                 zone = True
-                attemptsZ = attemptsT
+                tempAttemptZ = tempAttemptZ + 1
     return [top, zone, tempAttemptT, tempAttemptZ]
 
 
