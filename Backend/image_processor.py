@@ -17,7 +17,7 @@ def process_image(image_path):
 
     return extracted_text.strip()  # Return the extracted text without extra spaces
 
-
+# test commit for git.
 #takes in the text from image processor and converts it into a score
 def process_scorecard(text): 
     tops = 0
